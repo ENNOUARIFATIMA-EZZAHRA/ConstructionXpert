@@ -1,0 +1,643 @@
+
+
+package com.constructionxpert.model;
+
+import java.util.Date;
+
+public class Project {
+    private int id;
+    private String name;
+    private String description;
+    private Date startDate;
+    private Date endDate;
+    private double budget;
+
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
+    public double getBudget() { return budget; }
+    public void setBudget(double budget) { this.budget = budget; }
+}
+**********""""""
+package com.constructionxpert.model;
+
+import java.util.Date;
+import java.util.List;
+
+public class Task {
+    private int id;
+    private String description;
+    private Date startDate;
+    private Date endDate;
+    private List<Resource> resources;
+
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
+    public List<Resource> getResources() { return resources; }
+    public void setResources(List<Resource> resources) { this.resources = resources; }
+}
+********"""
+package com.constructionxpert.model;
+
+public class Resource {
+    private int id;
+    private String name;
+    private String type;
+    private int quantity;
+    private String supplierInfo;
+
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public String getSupplierInfo() { return supplierInfo; }
+    public void setSupplierInfo(String supplierInfo) { this.supplierInfo = supplierInfo; }
+}
+*****************
+package com.constructionxpert.controller;
+
+import com.constructionxpert.model.Project;
+import com.constructionxpert.dao.ProjectDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+public class ProjectController {
+    private ProjectDAO projectDAO;
+
+    public ProjectController(ProjectDAO projectDAO) {
+        this.projectDAO = projectDAO;
+    }
+
+    public void createProject(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String startDateStr = request.getParameter("startDate");
+        String endDateStr = request.getParameter("endDate");
+        double budget = Double.parseDouble(request.getParameter("budget"));
+
+        Project project = new Project();
+        project.setName(name);
+        project.setDescription(description);
+        project.setStartDate(Date.valueOf(startDateStr));
+        project.setEndDate(Date.valueOf(endDateStr));
+        project.setBudget(budget);
+
+        projectDAO.createProject(project);
+        response.sendRedirect("listProjects");
+    }
+
+    public void listProjects(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Project> projects = projectDAO.getAllProjects();
+        request.setAttribute("projects", projects);
+        request.getRequestDispatcher("/listProjects.html").forward(request, response);
+    }
+
+    public void updateProject(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String startDateStr = request.getParameter("startDate");
+        String endDateStr = request.getParameter("endDate");
+        double budget = Double.parseDouble(request.getParameter("budget"));
+
+        Project project = new Project();
+        project.setId(id);
+        project.setName(name);
+        project.setDescription(description);
+        project.setStartDate(Date.valueOf(startDateStr));
+        project.setEndDate(Date.valueOf(endDateStr));
+        project.setBudget(budget);
+
+        projectDAO.updateProject(project);
+        response.sendRedirect("listProjects");
+    }
+
+    public void deleteProject(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        projectDAO.deleteProject(id);
+        response.sendRedirect("listProjects");
+    }
+}
+****************
+package com.constructionxpert.controller;
+
+import com.constructionxpert.model.Task;
+import com.constructionxpert.dao.TaskDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+public class TaskController {
+    private TaskDAO taskDAO;
+
+    public TaskController(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
+    }
+
+    public void createTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String description = request.getParameter("description");
+        String startDateStr = request.getParameter("startDate");
+        String endDateStr = request.getParameter("endDate");
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
+
+        Task task = new Task();
+        task.setDescription(description);
+        task.setStartDate(Date.valueOf(startDateStr));
+        task.setEndDate(Date.valueOf(endDateStr));
+
+        taskDAO.createTask(task);
+        response.sendRedirect("listTasks?projectId=" + projectId);
+    }
+
+    public void listTasks(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
+        List<Task> tasks = taskDAO.getTasksByProjectId(projectId);
+        request.setAttribute("tasks", tasks);
+        request.getRequestDispatcher("/listTasks.html").forward(request, response);
+    }
+
+    public void updateTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String description = request.getParameter("description");
+        String startDateStr = request.getParameter("startDate");
+        String endDateStr = request.getParameter("endDate");
+
+        Task task = new Task();
+        task.setId(id);
+        task.setDescription(description);
+        task.setStartDate(Date.valueOf(startDateStr));
+        task.setEndDate(Date.valueOf(endDateStr));
+
+        taskDAO.updateTask(task);
+        response.sendRedirect("listTasks?projectId=" + request.getParameter("projectId"));
+    }
+
+    public void deleteTask(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
+        taskDAO.deleteTask(id);
+        response.sendRedirect("listTasks?projectId=" + projectId);
+    }
+}
+*********
+package com.constructionxpert.controller;
+
+import com.constructionxpert.model.Resource;
+import com.constructionxpert.dao.ResourceDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+public class ResourceController {
+    private ResourceDAO resourceDAO;
+
+    public ResourceController(ResourceDAO resourceDAO) {
+        this.resourceDAO = resourceDAO;
+    }
+
+    public void addResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String type = request.getParameter("type");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String supplierInfo = request.getParameter("supplierInfo");
+
+        Resource resource = new Resource();
+        resource.setName(name);
+        resource.setType(type);
+        resource.setQuantity(quantity);
+        resource.setSupplierInfo(supplierInfo);
+
+        resourceDAO.addResource(resource);
+        response.sendRedirect("listResources");
+    }
+
+    public void listResources(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Resource> resources = resourceDAO.getAllResources();
+        request.setAttribute("resources", resources);
+        request.getRequestDispatcher("/listResources.html").forward(request, response);
+    }
+
+        public void updateResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String type = request.getParameter("type");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        Resource resource = new Resource();
+        resource.setId(id);
+        resource.setName(name);
+        resource.setType(type);
+        resource.setQuantity(quantity);
+
+        resourceDAO.updateResource(resource);
+        response.sendRedirect("listResources");
+    }
+
+    public void deleteResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        resourceDAO.deleteResource(id);
+        response.sendRedirect("listResources");
+    }
+}
+*******************
+User profile
+package com.constructionxpert.controller;
+
+import com.constructionxpert.model.UserProfile;
+import com.constructionxpert.dao.UserProfileDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class UserProfileController {
+    private UserProfileDAO userProfileDAO;
+
+    public UserProfileController(UserProfileDAO userProfileDAO) {
+        this.userProfileDAO = userProfileDAO;
+    }
+
+    public void updateProfile(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password"); // Consider hashing the password
+
+        UserProfile userProfile = new UserProfile();
+        userProfile.setId(id);
+        userProfile.setUsername(username);
+        userProfile.setEmail(email);
+        userProfile.setPassword(password);
+
+        userProfileDAO.updateUser (userProfile);
+        response.sendRedirect("profile.html");
+    }
+}
+****************
+Login servlets 
+package com.constructionxpert.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+public class LoginServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        // Simple authentication logic (replace with real authentication)
+        if ("admin".equals(username) && "password".equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", username);
+            response.sendRedirect("listProjects");
+        } else {
+            response.sendRedirect("login.html?error=Invalid credentials");
+        }
+    }
+}
+******************
+/ConstructionXpert
+    /src
+        /main
+            /java
+                /com
+                    /constructionxpert
+                        /controller
+                            ProjectController.java
+                            TaskController.java
+                            ResourceController.java
+                            UserProfileController.java
+                            LoginServlet.java
+                            LogoutServlet.java
+                        /model
+                            Project.java
+                            Task.java
+                            Resource.java
+                            UserProfile.java
+                        /dao
+                            ProjectDAO.java
+                            TaskDAO.java
+                            ResourceDAO.java
+                            UserProfileDAO.java
+            /resources
+                /templates
+                /static
+                    /css
+                        styles.css
+                    /js
+                        scripts.js
+            /webapp
+                /WEB-INF
+                    web.xml
+                login.html
+                createProject.html
+                listProjects.html
+                createTask.html
+                listTasks.html
+                createResource.html
+                listResources.html
+                profile.html
+    /pom.xml
+    /README.md de 
+***************
+Create projet 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Project</title>
+    <link rel="stylesheet" href="/static/css/styleservletrespo se 
+<body>
+    <h1>Create New Project</h1>
+    <form action="/createProject" method="POST">
+        <input type="text" name="name" placeholder="Project Name" required>
+        <textarea name="description" placeholder="Description"></textarea>
+        <input type="date" name="startDate" required>
+        <input type="date" name="endDate" required>
+                <input type="number" name="budget" placeholder="Budget" required>
+        <button type="submit">Create Project</button>
+    </form>
+    <a href="listProjects">Back to Project List</a>
+</body>
+</html>
+***†***********
+List projet 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project List</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Project List</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Budget</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Loop through projects and display them -->
+        <c:forEach var="project" items="${projects}">
+            <tr>
+                <td>${project.name}</td>
+                <td>${project.description}</td>
+                <td>${project.startDate}</td>
+                <td>${project.endDate}</td>
+                <td>${project.budget}</td>
+                <td>
+                    <a href="editProject?id=${project.id}">Edit</a>
+                    <a href="deleteProject?id=${project.id}">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+    <a href="createProject.html">Create New Project</a>
+</body>
+</html>
+***************
+Create tasks
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Create New Task</h1>
+    <form action="/createTask" method="POST">
+        <input type="text" name="description" placeholder="Task Description" required>
+        <input type="date" name="startDate" required>
+        <input type="date" name="endDate" required>
+        <input type="hidden" name="projectId" value="${projectId}">
+        <button type="submit">Create Task</button>
+    </form>
+    <a href="listTasks?projectId=${projectId}">Back to Task List</a>
+</body>
+</html>
+**************
+List tasks
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Task List for Project ID: ${projectId}</h1>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Loop through tasks and display them -->
+        <c:forEach var="task" items="${tasks}">
+            <tr>
+                <td>${task.description}</td>
+                <td>${task.startDate}</td>
+                <td>${task.endDate}</td>
+                <td>
+                    <a href="editTask?id=${task.id}&projectId=${projectId}">Edit</a>
+                    <a href="deleteTask?id=${task.id}&projectId=${projectId}">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+    <a href="createTask.html?projectId=${projectId}">Create New Task</a>
+</body>
+</html>
+****************
+Create ressources
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Resource</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Add New Resource</h1>
+    <form action="/addResource" method="POST">
+        <input type="text" name="name" placeholder="Resource Name" required>
+        <input type="text" name="type" placeholder="Resource Type" required>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="text" name="supplierInfo" placeholder="Supplier Information" required>
+        <button type="submit">Add Resource</button>
+    </form>
+    <a href="listResources">Back to Resource List</a>
+</body>
+</html>
+*************
+List ressources 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resource List</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Resource List</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Supplier Info</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Loop through resources and display them -->
+        <c:forEach var="resource" items="${resources}">
+            <tr>
+                <td>${resource.name}</td>
+                <td>${resource.type}</td>
+                <td>${resource.quantity}</td>
+                <td>${resource.supplierInfo}</td>
+                <td>
+                    <a href="editResource?id=${resource.id}">Edit</a>
+                    <a href="deleteResource?id=${resource.id}">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+    <a href="createResource.html">Add New Resource</a>
+</body>
+</html>
+**************
+Web.xml
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>ProjectServlet</servlet-name>
+        <servlet-class>com.constructionxpert.controller.ProjectController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectServlet</servlet-name>
+        <url-pattern>/createProject</url-pattern>
+        <url-pattern>/listProjects</url-pattern>
+        <url-pattern>/deleteProject</url-pattern>
+        <url-pattern>/editProject</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TaskServlet</servlet-name>
+        <servlet-class>com.constructionxpert.controller.TaskController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TaskServlet</servlet-name>
+        <url-pattern>/createTask</url-pattern>
+        <url-pattern>/listTasks</url-pattern>
+        <url-pattern>/deleteTask</url-pattern>
+               <url-pattern>/editTask</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResourceServlet</servlet-name>
+        <servlet-class>com.constructionxpert.controller.ResourceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResourceServlet</servlet-name>
+        <url-pattern>/addResource</url-pattern>
+        <url-pattern>/listResources</url-pattern>
+        <url-pattern>/deleteResource</url-pattern>
+        <url-pattern>/editResource</url-pattern>
+    </servlet-mapping>
+</web-app>
+***********************
+Pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.constructionxpert</groupId>
+    <artifactId>ConstructionXpert</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Other dependencies as needed -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+*******************
+
