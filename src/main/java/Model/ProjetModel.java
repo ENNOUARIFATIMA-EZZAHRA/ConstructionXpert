@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class ProjetModel {
     private int id;
-    private String nom;
-    private String description;
-    private Date date_debut;
-    private Date date_fin;
-    private float budget;
+    private static String nom;
+    private static String description;
+    private static Date date_debut;
+    private static Date date_fin;
+    private static float budget;
 
 
     public ProjetModel(int id, String nom, String description, Date date_debut, Date date_fin, float budget) {
@@ -36,6 +36,10 @@ public class ProjetModel {
 
     public ProjetModel(){}
 
+    public ProjetModel(int id, String nom, String description, Date date_debut, Date date_fin, Double budget) {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -44,7 +48,7 @@ public class ProjetModel {
         this.id = id;
     }
 
-    public String getNom() {
+    public static String getNom() {
         return nom;
     }
 
@@ -52,7 +56,7 @@ public class ProjetModel {
         this.nom = nom;
     }
 
-    public String getDescription() {
+    public static String getDescription() {
         return description;
     }
 
@@ -60,7 +64,7 @@ public class ProjetModel {
         this.description = description;
     }
 
-    public Date getDate_debut() {
+    public static Date getDate_debut() {
         return date_debut;
     }
 
@@ -68,7 +72,7 @@ public class ProjetModel {
         this.date_debut = date_debut;
     }
 
-    public Date getDate_fin() {
+    public static Date getDate_fin() {
         return date_fin;
     }
 
@@ -76,7 +80,7 @@ public class ProjetModel {
         this.date_fin = date_fin;
     }
 
-    public float getBudget() {
+    public static float getBudget() {
         return budget;
     }
 
@@ -85,4 +89,6 @@ public class ProjetModel {
     }
 
 
+    public void updateProjet(ProjetModel projet) {
+    }
 }

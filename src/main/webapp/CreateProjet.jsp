@@ -7,7 +7,7 @@
     <title>ConstructionXpertApp</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-cover bg-center h-screen" style="background-image: url('images/background.jpg');">
+<body class="bg-cover bg-center h-screen" >
 
 <!-- Navigation Bar -->
 <nav class="flex justify-between items-start bg-white text-black p-4 border-b-2 border-gray-200">
@@ -18,17 +18,17 @@
         <a href="/ressource" class="hover:text-blue-500 text-bold-500 ">Ressource</a>
     </div>
     <div class="flex space-x-10">
-        <a href="/projet" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Register</a>
-        <a href="/projet" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Login</a>
+        <a href="/Register.jsp" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Register</a>
+        <a href="/Login.jsp" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Login</a>
     </div>
 </nav>
 
 <div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md mt-8">
     <h1 class="text-2xl font-bold mb-6 text-center">Create New Project</h1>
-    <form action="/WEB-INF/ListProjets.jsp" method="POST" class="space-y-4">
+    <form action="${pageContext.request.contextPath}/ProjetServlet" method="POST" class="space-y-4">
         <div>
-            <label for="name" class="block font-medium">Project Name</label>
-            <input type="text" id="name" name="name" placeholder="Project Name" required
+            <label for="nom" class="block font-medium">Project Name</label>
+            <input type="text" id="nom" name="nom" placeholder="Project Name" required
                    class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
@@ -37,13 +37,13 @@
                       class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
         <div>
-            <label for="startDate" class="block font-medium">Start Date</label>
-            <input type="date" id="startDate" name="startDate" required
+            <label for="date_debut" class="block font-medium">Start Date</label>
+            <input type="date" id="date_debut" name="date_debut" required
                    class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
             <label for="endDate" class="block font-medium">End Date</label>
-            <input type="date" id="endDate" name="endDate" required
+            <input type="date" id="endDate" name="date_fin" required
                    class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
@@ -53,8 +53,8 @@
         </div>
         <div class="flex justify-between items-center">
             <button type="submit"
-                    src="/WEB-INF/ListProjets.jsp" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create Project</button>
-            <a href="/WEB-INF/ListProjets.jsp" class="text-blue-500 hover:underline">Back to Project List</a>
+                    src="CreatProjet.jsp"class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create Project</button>
+            <a href="ProjetServlet" class="text-blue-500 hover:underline">Back to Project List</a>
         </div>
     </form>
 </div>

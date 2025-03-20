@@ -35,8 +35,8 @@
 
 
 <div class="text-center mt-16">
-    <a href="/projet" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">
-        Ajouter un projet
+    <a href="CreateProjet.jsp" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">
+        Create Project
     </a>
 </div>
 
