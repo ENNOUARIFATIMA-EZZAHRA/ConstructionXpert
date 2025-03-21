@@ -25,7 +25,7 @@
 
 <div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md mt-8">
     <h1 class="text-2xl font-bold mb-6 text-center">Create New Project</h1>
-    <form action="${pageContext.request.contextPath}/ProjetServlet" method="POST" class="space-y-4">
+    <form action="${pageContext.request.contextPath}/insert" method="POST" class="space-y-4">
         <div>
             <label for="nom" class="block font-medium">Project Name</label>
             <input type="text" id="nom" name="nom" placeholder="Project Name" required

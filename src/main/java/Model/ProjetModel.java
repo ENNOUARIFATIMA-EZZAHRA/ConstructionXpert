@@ -3,12 +3,12 @@ package Model;
 import java.sql.Date;
 
 public class ProjetModel {
-    private int id;
-    private static String nom;
-    private static String description;
-    private static Date date_debut;
-    private static Date date_fin;
-    private static float budget;
+    private  int id;
+    private  String nom;
+    private  String description;
+    private  Date date_debut;
+    private  Date date_fin;
+    private  float budget;
 
 
     public ProjetModel(int id, String nom, String description, Date date_debut, Date date_fin, float budget) {
@@ -36,10 +36,6 @@ public class ProjetModel {
 
     public ProjetModel(){}
 
-    public ProjetModel(int id, String nom, String description, Date date_debut, Date date_fin, Double budget) {
-
-    }
-
     public int getId() {
         return id;
     }
@@ -48,7 +44,7 @@ public class ProjetModel {
         this.id = id;
     }
 
-    public static String getNom() {
+    public String getNom() {
         return nom;
     }
 
@@ -56,7 +52,7 @@ public class ProjetModel {
         this.nom = nom;
     }
 
-    public static String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -64,7 +60,7 @@ public class ProjetModel {
         this.description = description;
     }
 
-    public static Date getDate_debut() {
+    public Date getDate_debut() {
         return date_debut;
     }
 
@@ -72,7 +68,7 @@ public class ProjetModel {
         this.date_debut = date_debut;
     }
 
-    public static Date getDate_fin() {
+    public Date getDate_fin() {
         return date_fin;
     }
 
@@ -80,15 +76,11 @@ public class ProjetModel {
         this.date_fin = date_fin;
     }
 
-    public static float getBudget() {
+    public float getBudget() {
         return budget;
     }
 
     public void setBudget(float budget) {
         this.budget = budget;
-    }
-
-
-    public void updateProjet(ProjetModel projet) {
     }
 }

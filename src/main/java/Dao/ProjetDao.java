@@ -39,7 +39,7 @@ public static void createProjet(ProjetModel projet) throws SQLException {
                 String description = rs.getString("description");
                 Date date_debut = rs.getDate("Date_debut");
                 Date date_fin = rs.getDate("Date_fin");
-                Double budget = rs.getDouble("budget");
+                float budget = rs.getFloat("budget");
                 projet.add(new ProjetModel(id, nom,description,date_debut,date_fin,budget));
 
             }
@@ -53,7 +53,6 @@ public static void createProjet(ProjetModel projet) throws SQLException {
     public static boolean updateProjet(ProjetModel projet) throws SQLException {
         String UPDATE_PROJET_SQL = "UPDATE projet SET nom = ?, description = ?, date_debut = ?, date_fin = ?, budget = ? WHERE id = ?";
         boolean rowUpdated = false;
-
         DatabaseMetaData DatabaseConnection;
         try (Connection connection = DatabaseConnector.getConnection();
              PreparedStatement stmt = connection.prepareStatement(UPDATE_PROJET_SQL)) {
@@ -63,7 +62,7 @@ public static void createProjet(ProjetModel projet) throws SQLException {
             stmt.setDate(3, projet.getDate_debut());
             stmt.setDate(4, projet.getDate_fin());
             stmt.setDouble(5, projet.getBudget());
-            stmt.setInt(6, projet.getId()); // L'ID est nécessaire pour identifier le projet
+            stmt.setInt(6, projet.getId());
 
             int affectedRows = stmt.executeUpdate();
             rowUpdated = (affectedRows > 0);
@@ -74,5 +73,19 @@ public static void createProjet(ProjetModel projet) throws SQLException {
         return rowUpdated;
     }
 
+    public static boolean deleteProjet(int id) throws SQLException {
+    String DELETE_PROJET_SQL ="DELETE FROM projets WHERE id = ?";
+        boolean rowDeleted;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_PROJET_SQL);) {
+           statement.setInt(1, id);
+            rowDeleted = statement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
+
+//    public static ProjetModel getProjetById(int id) {
+//
+//    }
+}
 

@@ -1,0 +1,861 @@
+20-Mar-2025 10:30:18.339 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke "Servlet.service()" pour la servlet [Controlleur.ProjetServlet] a généré une exception
+	java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "Dao.ProjetDao.connection" is null
+		at Dao.ProjetDao.createProjet(ProjetDao.java:15)
+		at Controlleur.ProjetServlet.createProjet(ProjetServlet.java:58)
+		at Controlleur.ProjetServlet.doPost(ProjetServlet.java:27)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 10:31:40.069 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke "Servlet.service()" pour la servlet [Controlleur.ProjetServlet] a généré une exception
+	java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "Dao.ProjetDao.connection" is null
+		at Dao.ProjetDao.createProjet(ProjetDao.java:15)
+		at Controlleur.ProjetServlet.createProjet(ProjetServlet.java:58)
+		at Controlleur.ProjetServlet.doPost(ProjetServlet.java:27)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 10:34:45.977 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [Controlleur.ProjetServlet] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [L'exécution de la servlet a lancé une exception] avec la cause
+	java.lang.ExceptionInInitializerError: Exception java.lang.RuntimeException: Erreur de connexion à la base de données ! [in thread "http-nio-8080-exec-3"]
+		at utils.DatabaseConnector.getConnection(DatabaseConnector.java:21)
+		at Dao.ProjetDao.<clinit>(ProjetDao.java:11)
+		at Controlleur.ProjetServlet.createProjet(ProjetServlet.java:58)
+		at Controlleur.ProjetServlet.doPost(ProjetServlet.java:27)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 10:34:45.977 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [Controlleur.ProjetServlet] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [L'exécution de la servlet a lancé une exception] avec la cause
+	java.lang.RuntimeException: Erreur de connexion à la base de données !
+		at utils.DatabaseConnector.getConnection(DatabaseConnector.java:21)
+		at Dao.ProjetDao.<clinit>(ProjetDao.java:11)
+		at Controlleur.ProjetServlet.createProjet(ProjetServlet.java:58)
+		at Controlleur.ProjetServlet.doPost(ProjetServlet.java:27)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 11:35:05.686 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke "Servlet.service()" pour la servlet [Controlleur.ProjetServlet] a généré une exception
+	java.lang.IllegalArgumentException
+		at java.sql/java.sql.Date.valueOf(Date.java:114)
+		at Controlleur.ProjetServlet.createProjet(ProjetServlet.java:42)
+		at Controlleur.ProjetServlet.doPost(ProjetServlet.java:26)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 11:38:05.526 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [15] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\ListProjets_jsp.java]
+Only a type can be imported. Model.TacheModel resolves to a package
+
+Une erreur s'est produite à la ligne : [29] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+26: 
+27:     <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+
+
+Une erreur s'est produite à la ligne : [29] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+26: 
+27:     <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+
+
+Une erreur s'est produite à la ligne : [31] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+33:         <div class="w-full md:w-1/3 border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+34:             <div class="bg-gray-200 px-4 py-2">
+
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [15] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\ListProjets_jsp.java]
+Only a type can be imported. Model.TacheModel resolves to a package
+
+Une erreur s'est produite à la ligne : [29] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+26: 
+27:     <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+
+
+Une erreur s'est produite à la ligne : [29] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+26: 
+27:     <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+
+
+Une erreur s'est produite à la ligne : [31] dans le fichier jsp : [/ListProjets.jsp]
+TacheModel cannot be resolved to a type
+28:         <%
+29:             List<TacheModel> taches = (List<TacheModel>) request.getAttribute("taches");
+30:             if (taches != null) {
+31:                 for (TacheModel tache : taches) {
+32:         %>
+33:         <div class="w-full md:w-1/3 border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+34:             <div class="bg-gray-200 px-4 py-2">
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:22:10.206 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:23:32.603 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:26:20.651 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.ApplicationDispatcher.invoke "Servlet.service()" pour la servlet [jsp] a lancé une exception
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [37] dans le fichier jsp : [/ListProjets.jsp]
+The method getId() is undefined for the type ProjetServlet
+34:                     <a href="update.jsp?id=<%= projet.getId() %>" class="text-blue-500 hover:text-blue-700 mx-2">
+35:                         <i class="fas fa-edit"></i>
+36:                     </a>
+37:                     <a href="delete.jsp?id=<%= ProjetServlet.getId() %>" class="text-red-500 hover:text-red-700">
+38:                         <i class="fas fa-trash"></i>
+39:                     </a>
+40:                 </div>
+
+
+Une erreur s'est produite à la ligne : [44] dans le fichier jsp : [/ListProjets.jsp]
+The method getDescription() is undefined for the type ProjetServlet
+41:             </div>
+42:             <div class="p-4 space-y-2">
+43:                 <h3 class="text-md font-semibold">Description</h3>
+44:                 <p class="text-sm text-gray-600"><%= ProjetServlet.getDescription() %></p>
+45:                 <div class="text-sm mt-4">
+46:                     <div>
+47:                         <span class="font-semibold">Date début :</span>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:633)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:409)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:331)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+		at Controlleur.ProjetServlet.listProjets(ProjetServlet.java:66)
+		at Controlleur.ProjetServlet.doGet(ProjetServlet.java:39)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:26:20.651 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [Controlleur.ProjetServlet] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [37] dans le fichier jsp : [/ListProjets.jsp]
+The method getId() is undefined for the type ProjetServlet
+34:                     <a href="update.jsp?id=<%= projet.getId() %>" class="text-blue-500 hover:text-blue-700 mx-2">
+35:                         <i class="fas fa-edit"></i>
+36:                     </a>
+37:                     <a href="delete.jsp?id=<%= ProjetServlet.getId() %>" class="text-red-500 hover:text-red-700">
+38:                         <i class="fas fa-trash"></i>
+39:                     </a>
+40:                 </div>
+
+
+Une erreur s'est produite à la ligne : [44] dans le fichier jsp : [/ListProjets.jsp]
+The method getDescription() is undefined for the type ProjetServlet
+41:             </div>
+42:             <div class="p-4 space-y-2">
+43:                 <h3 class="text-md font-semibold">Description</h3>
+44:                 <p class="text-sm text-gray-600"><%= ProjetServlet.getDescription() %></p>
+45:                 <div class="text-sm mt-4">
+46:                     <div>
+47:                         <span class="font-semibold">Date début :</span>
+
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [37] dans le fichier jsp : [/ListProjets.jsp]
+The method getId() is undefined for the type ProjetServlet
+34:                     <a href="update.jsp?id=<%= projet.getId() %>" class="text-blue-500 hover:text-blue-700 mx-2">
+35:                         <i class="fas fa-edit"></i>
+36:                     </a>
+37:                     <a href="delete.jsp?id=<%= ProjetServlet.getId() %>" class="text-red-500 hover:text-red-700">
+38:                         <i class="fas fa-trash"></i>
+39:                     </a>
+40:                 </div>
+
+
+Une erreur s'est produite à la ligne : [44] dans le fichier jsp : [/ListProjets.jsp]
+The method getDescription() is undefined for the type ProjetServlet
+41:             </div>
+42:             <div class="p-4 space-y-2">
+43:                 <h3 class="text-md font-semibold">Description</h3>
+44:                 <p class="text-sm text-gray-600"><%= ProjetServlet.getDescription() %></p>
+45:                 <div class="text-sm mt-4">
+46:                     <div>
+47:                         <span class="font-semibold">Date début :</span>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:633)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:409)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:331)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+		at Controlleur.ProjetServlet.listProjets(ProjetServlet.java:66)
+		at Controlleur.ProjetServlet.doGet(ProjetServlet.java:39)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:27:55.110 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [86] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "else Statement" to complete IfStatement
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete Block
+
+Une erreur s'est produite à la ligne : [204] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:46:36.010 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [48] dans le fichier jsp : [/update.jsp]
+Syntax error, insert "}" to complete Statement
+45:                         </button>
+46:                     </form>
+47: 
+48:     <% } else { %>
+49:     <p class="text-center text-gray-600 text-lg">Aucun projet disponible.</p>
+50:     <% } %>
+51: 
+
+
+Une erreur s'est produite à la ligne : [210] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Une erreur s'est produite à la ligne : [211] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [48] dans le fichier jsp : [/update.jsp]
+Syntax error, insert "}" to complete Statement
+45:                         </button>
+46:                     </form>
+47: 
+48:     <% } else { %>
+49:     <p class="text-center text-gray-600 text-lg">Aucun projet disponible.</p>
+50:     <% } %>
+51: 
+
+
+Une erreur s'est produite à la ligne : [210] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "}", delete this token
+
+Une erreur s'est produite à la ligne : [211] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error, insert "}" to complete ClassBody
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
+20-Mar-2025 15:49:33.792 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() du Servlet [jsp] dans le contexte au chemin [/ConstructionXpertApp] a retourné une exception [Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [28] dans le fichier jsp : [/update.jsp]
+projets cannot be resolved to a variable
+25: </nav>
+26: 
+27: <!-- Contenu principal -->
+28: <% for (ProjetModel projet : projets) { %>
+29: <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+30:     <div class="bg-gray-200 px-4 py-2 flex justify-between items-center">
+31:         <h2 class="text-xl font-bold"><%= projet.getNom() %></h2>
+
+
+Une erreur s'est produite à la ligne : [45] dans le fichier jsp : [/update.jsp]
+Syntax error on token "else", finally expected
+42: </div>
+43: <% } %> <!--
+44: 
+45: <% } else { %>
+46: <p class="text-center text-gray-600 text-lg">Aucun projet disponible.</p>
+47: <% } %>
+48: 
+
+
+Une erreur s'est produite à la ligne : [184] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "catch", Identifier expected
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [187] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [187] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [189] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+response cannot be resolved
+
+Une erreur s'est produite à la ligne : [190] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [192] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [195] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [195] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved
+
+Une erreur s'est produite à la ligne : [198] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "finally", { expected
+
+Une erreur s'est produite à la ligne : [199] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+Stacktrace:] avec la cause
+	org.apache.jasper.JasperException: Impossible de compiler la classe pour la JSP: 
+
+Une erreur s'est produite à la ligne : [28] dans le fichier jsp : [/update.jsp]
+projets cannot be resolved to a variable
+25: </nav>
+26: 
+27: <!-- Contenu principal -->
+28: <% for (ProjetModel projet : projets) { %>
+29: <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden">
+30:     <div class="bg-gray-200 px-4 py-2 flex justify-between items-center">
+31:         <h2 class="text-xl font-bold"><%= projet.getNom() %></h2>
+
+
+Une erreur s'est produite à la ligne : [45] dans le fichier jsp : [/update.jsp]
+Syntax error on token "else", finally expected
+42: </div>
+43: <% } %> <!--
+44: 
+45: <% } else { %>
+46: <p class="text-center text-gray-600 text-lg">Aucun projet disponible.</p>
+47: <% } %>
+48: 
+
+
+Une erreur s'est produite à la ligne : [184] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "catch", Identifier expected
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [186] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [187] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [187] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [189] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+response cannot be resolved
+
+Une erreur s'est produite à la ligne : [190] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [192] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+out cannot be resolved
+
+Une erreur s'est produite à la ligne : [195] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+Une erreur s'est produite à la ligne : [195] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved
+
+Une erreur s'est produite à la ligne : [198] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+Syntax error on token "finally", { expected
+
+Une erreur s'est produite à la ligne : [199] dans le fichier Java généré : [C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf\Catalina\localhost\work\Catalina\localhost\ConstructionXpertApp\org\apache\jsp\update_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:670)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1575)
