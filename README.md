@@ -110,8 +110,9 @@ Documentation claire ✅
 Respect des délais ✅
 
 #LES DIAGRAMMES
-![ClassDiagram1](https://github.com/user-attachments/assets/788825e2-0fc6-49d1-a40b-b1bbb733fd9d)
-![SequenceDiagram1](https://github.com/user-attachments/assets/13d37afc-de6b-4cd4-9042-12d70a755481)
-![UseCaseDiagram1](https://github.com/user-attachments/assets/821dfcdc-a038-40c8-bc88-0a0a97c601d1)
+
+<img width="683" alt="image" src="https://github.com/user-attachments/assets/03a21218-69d3-4f5f-9b17-3810ac1aed33" />
+
+
 
 
