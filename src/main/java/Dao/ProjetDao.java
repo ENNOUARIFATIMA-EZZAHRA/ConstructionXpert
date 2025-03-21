@@ -1,7 +1,6 @@
 package Dao;
 
 import Model.ProjetModel;
-import utils.DatabaseConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public static void createProjet(ProjetModel projet) throws SQLException {
         String UPDATE_PROJET_SQL = "UPDATE projet SET nom = ?, description = ?, date_debut = ?, date_fin = ?, budget = ? WHERE id = ?";
         boolean rowUpdated = false;
         DatabaseMetaData DatabaseConnection;
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = getConnection();
              PreparedStatement stmt = connection.prepareStatement(UPDATE_PROJET_SQL)) {
 
             stmt.setString(1, projet.getNom());
@@ -84,8 +83,34 @@ public static void createProjet(ProjetModel projet) throws SQLException {
         return rowDeleted;
     }
 
-//    public static ProjetModel getProjetById(int id) {
-//
-//    }
+
+    public ProjetModel getProjetById(int id) {
+        ProjetModel projet = null;
+        String sql = "SELECT * FROM projets WHERE id = ?";
+
+        DatabaseMetaData DBConnection = null;
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                projet = new ProjetModel();
+                projet.setId(rs.getInt("id"));
+                projet.setNom(rs.getString("nom"));
+                projet.setDescription(rs.getString("description"));
+                projet.setDate_debut(rs.getDate("date_debut"));
+                projet.setDate_fin(rs.getDate("date_fin"));
+                projet.setBudget(rs.getFloat("budget"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return projet;
+    }
+
 }
 

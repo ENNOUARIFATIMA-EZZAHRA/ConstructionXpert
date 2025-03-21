@@ -16,10 +16,10 @@ import java.util.List;
 
 @WebServlet({"/ProjetServlet", "/CreateProjet","/UpdateProjet","/ListProjets","/updateProjet","/insert"})
 public class ProjetServlet extends HttpServlet {
-
+        public  ProjetDao projectDao ;
     @Override
     public void init() throws ServletException {
-        ProjetDao projectDao;
+       projectDao= new ProjetDao();
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ProjetServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         ProjetModel projet = new ProjetModel();
-        ProjetModel existingProjet =ProjetDao.getProjetById(id);
+        ProjetModel existingProjet =projectDao.getProjetById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("Update.jsp");
         request.setAttribute("projet", existingProjet);
         dispatcher.forward(request, response);
