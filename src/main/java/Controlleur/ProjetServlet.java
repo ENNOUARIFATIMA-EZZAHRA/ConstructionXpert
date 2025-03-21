@@ -61,8 +61,7 @@ public class ProjetServlet extends HttpServlet {
                     break;
 
             }
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -128,6 +127,8 @@ public class ProjetServlet extends HttpServlet {
 //        projet.setBudget((float) budget);
         ProjetDao.updateProjet(projet);
         response.sendRedirect("ListProjets");
+        System.out.println("Update projet: " + id + " | " + nom);
+
     }
 }
 

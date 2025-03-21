@@ -1,18 +1,22 @@
 package Dao;
 
 import Model.ProjetModel;
+import utils.DatabaseConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import static utils.DatabaseConnector.getConnection;
 
 public class ProjetDao {
-    private static final Connection connection= getConnection();
 
-public static void createProjet(ProjetModel projet) throws SQLException {
-        String sql = "INSERT INTO projets (nom, description,date_debut,date_fin,budget) VALUES (?,?,?,?,?)";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+    // Suppression de la variable statique 'connection'
+    // private static final Connection connection = getConnection();
+
+    // Création d'un projet
+    public static void createProjet(ProjetModel projet) throws SQLException {
+        String sql = "INSERT INTO projets (nom, description, date_debut, date_fin, budget) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DatabaseConnector.getConnection();  // Appel dynamique ici
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, projet.getNom());
             stmt.setString(2, projet.getDescription());
             stmt.setDate(3, projet.getDate_debut());
@@ -20,76 +24,73 @@ public static void createProjet(ProjetModel projet) throws SQLException {
             stmt.setDouble(5, projet.getBudget());
             stmt.executeUpdate();
         }
-}
-
-//affichage
-
-    public static List<ProjetModel> getAllProjets() {
-        List<ProjetModel> projet = new ArrayList<>();
-        String SELECT_ALL_LIST="select * from projets";
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_LIST)) {
-            System.out.println(preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nom = rs.getString("nom");
-                String description = rs.getString("description");
-                Date date_debut = rs.getDate("Date_debut");
-                Date date_fin = rs.getDate("Date_fin");
-                float budget = rs.getFloat("budget");
-                projet.add(new ProjetModel(id, nom,description,date_debut,date_fin,budget));
-
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage()+"errour");
-        }
-        System.out.print("list of in method ");
-        return projet;
     }
 
-    public static boolean updateProjet(ProjetModel projet) throws SQLException {
-        String UPDATE_PROJET_SQL = "UPDATE projet SET nom = ?, description = ?, date_debut = ?, date_fin = ?, budget = ? WHERE id = ?";
-        boolean rowUpdated = false;
-        DatabaseMetaData DatabaseConnection;
-        try (Connection connection = getConnection();
-             PreparedStatement stmt = connection.prepareStatement(UPDATE_PROJET_SQL)) {
+    // Récupérer tous les projets
+    public static List<ProjetModel> getAllProjets() {
+        List<ProjetModel> projets = new ArrayList<>();
+        String sql = "SELECT * FROM projets";
 
-            stmt.setString(1, projet.getNom());
-            stmt.setString(2, projet.getDescription());
-            stmt.setDate(3, projet.getDate_debut());
-            stmt.setDate(4, projet.getDate_fin());
-            stmt.setDouble(5, projet.getBudget());
-            stmt.setInt(6, projet.getId());
+        try (Connection conn = DatabaseConnector.getConnection();  // Appel dynamique ici
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-            int affectedRows = stmt.executeUpdate();
-            rowUpdated = (affectedRows > 0);
+            while (rs.next()) {
+                ProjetModel projet = new ProjetModel(
+                        rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("description"),
+                        rs.getDate("date_debut"),
+                        rs.getDate("date_fin"),
+                        rs.getFloat("budget")
+                );
+                projets.add(projet);
+            }
+            System.out.println("Liste des projets chargée depuis la base.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return rowUpdated;
+        return projets;
     }
 
+    // Mise à jour d'un projet
+    public static void updateProjet(ProjetModel projet) {
+        String sql = "UPDATE projets SET nom = ?, description = ?, date_debut = ?, date_fin = ?, budget = ? WHERE id = ?";
+        try (Connection conn = DatabaseConnector.getConnection();  // Appel dynamique ici
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, projet.getNom());
+            stmt.setString(2, projet.getDescription());
+            stmt.setDate(3, projet.getDate_debut());
+            stmt.setDate(4, projet.getDate_fin());
+            stmt.setFloat(5, projet.getBudget());
+            stmt.setInt(6, projet.getId());
+
+            stmt.executeUpdate();
+            System.out.println("Projet mis à jour : " + projet.getNom());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Suppression d'un projet
     public static boolean deleteProjet(int id) throws SQLException {
-    String DELETE_PROJET_SQL ="DELETE FROM projets WHERE id = ?";
+        String DELETE_PROJET_SQL = "DELETE FROM projets WHERE id = ?";
         boolean rowDeleted;
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_PROJET_SQL);) {
-           statement.setInt(1, id);
+        try (Connection connection = DatabaseConnector.getConnection();  // Appel dynamique ici
+             PreparedStatement statement = connection.prepareStatement(DELETE_PROJET_SQL)) {
+            statement.setInt(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
     }
 
-
+    // Récupérer un projet par son ID
     public ProjetModel getProjetById(int id) {
         ProjetModel projet = null;
         String sql = "SELECT * FROM projets WHERE id = ?";
 
-        DatabaseMetaData DBConnection = null;
-        try (Connection conn = DBConnection.getConnection();
+        try (Connection conn = DatabaseConnector.getConnection();  // Appel dynamique ici
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -111,6 +112,4 @@ public static void createProjet(ProjetModel projet) throws SQLException {
 
         return projet;
     }
-
 }
-

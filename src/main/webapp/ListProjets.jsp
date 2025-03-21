@@ -2,6 +2,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.ProjetModel" %>
 <%@ page import="Controlleur.ProjetServlet" %>
+
+<%
+    // Empêcher la mise en cache du navigateur
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+%>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,7 +34,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <% List<ProjetModel> projets = (List<ProjetModel>) request.getAttribute("projets");
 
-        if (projets != null) {
+            if (projets != null) {
                 for (ProjetModel projet : projets) { %>
         <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden">
             <div class="bg-gray-200 px-4 py-2 flex justify-between items-center">
