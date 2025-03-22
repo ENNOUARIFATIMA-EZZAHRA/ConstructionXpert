@@ -21,11 +21,11 @@
 <body class="bg-white text-gray-800">
 <nav class="flex items-center justify-between p-4 shadow-md">
     <div class="text-2xl font-bold">ConstructionXpert</div>
-    <ul class="hidden space-x-4 md:flex">
-        <li><a href="home.jsp" class="hover:text-pink-600">Home</a></li>
-        <li><a href="ListProjets.jsp" class="hover:text-pink-600">Projets</a></li>
-        <li><a href="Ressources.jsp" class="hover:text-pink-600">Resources</a></li>
-    </ul>
+    <div class="flex space-x-8 mt-4">
+        <a href="/ConstructionXpertApp/home.jsp" class="hover:text-blue-500 text-md">Home</a>
+        <a href="/ConstructionXpertApp/ListProjets" class="hover:text-blue-500 bold-100">Projets</a>
+        <a href="<%= request.getContextPath() %>/ListTaches" class="hover:text-blue-500 text-bold-500">Taches</a>
+    </div>
     <a href="<%=request.getContextPath()%>/CreateProjet" class="hidden md:inline-block px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">Create projet</a>
 </nav>
 

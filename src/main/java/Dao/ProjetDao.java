@@ -1,6 +1,7 @@
 package Dao;
 
 import Model.ProjetModel;
+import Model.TacheModel;
 import utils.DatabaseConnector;
 
 import java.sql.*;
@@ -93,19 +94,19 @@ public class ProjetDao {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                projet = new ProjetModel();
-                projet.setId(rs.getInt("id"));
-                projet.setNom(rs.getString("nom"));
-                projet.setDescription(rs.getString("description"));
-                projet.setDate_debut(rs.getDate("date_debut"));
-                projet.setDate_fin(rs.getDate("date_fin"));
-                projet.setBudget(rs.getFloat("budget"));
+                TacheModel taches = new TacheModel();
+                taches.setId(rs.getInt("id"));
+                taches.setNom(rs.getString("nom"));
+                taches.setDescription(rs.getString("description"));
+                taches.setDate_debut(rs.getDate("date_debut"));
+                taches.setDate_fin(rs.getDate("date_fin"));
+                taches.setBudget(rs.getFloat("budget"));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return projet;
+        return taches;
     }
 }

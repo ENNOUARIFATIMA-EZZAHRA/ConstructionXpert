@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-@WebServlet({"/ProjetServlet", "/CreateProjet","/UpdateProjet","/ListProjets","/updateProjet","/insert"})
+@WebServlet({"/ProjetServlet", "/CreateProjet","/UpdateProjet","/ListProjets","/updateProjet","/insertProjet"})
 public class ProjetServlet extends HttpServlet {
         public  ProjetDao projectDao ;
     @Override
@@ -28,7 +28,7 @@ public class ProjetServlet extends HttpServlet {
         String action = request.getServletPath();
         try {
             switch (action) {
-                case "/insert":
+                case "/insertProjet":
                     createProjet(request, response);
                     break;
                 case "/updateProjet":

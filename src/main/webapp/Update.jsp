@@ -14,11 +14,11 @@
 
 <nav class="flex items-center justify-between p-4 shadow-md">
     <div class="text-2xl font-bold">ConstructionXpert</div>
-    <ul class="hidden space-x-4 md:flex">
-        <li><a href="home.jsp" class="hover:text-pink-600">Home</a></li>
-        <li><a href="ListProjets.jsp" class="hover:text-pink-600">Projets</a></li>
-        <li><a href="Ressources.jsp" class="hover:text-pink-600">Resources</a></li>
-    </ul>
+    <div class="flex space-x-8 mt-4">
+        <a href="/ConstructionXpertApp/home.jsp" class="hover:text-blue-500 text-md">Home</a>
+        <a href="/ConstructionXpertApp/ListProjets" class="hover:text-blue-500 bold-100">Projets</a>
+        <a href="<%= request.getContextPath() %>/ListTaches" class="hover:text-blue-500 text-bold-500">Taches</a>
+    </div>
 </nav>
 
 <div class="max-w-3xl mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow">

@@ -13,13 +13,13 @@
 <nav class="flex justify-between items-start bg-white text-black p-4 border-b-2 border-gray-200">
     <div class="text-xl font-bold mt-2 ">ConstructionXpertApp</div>
     <div class="flex space-x-8 mt-4">
-        <a href="/home.jsp" class="hover:text-blue-500 text-md">Home</a>
-        <a href="/projet" class="hover:text-blue-500 bold-100">Projet</a>
-        <a href="/ressource" class="hover:text-blue-500 text-bold-500 ">Ressource</a>
+        <a href="/ConstructionXpertApp/home.jsp" class="hover:text-blue-500 text-md">Home</a>
+        <a href="/ConstructionXpertApp/ListProjets" class="hover:text-blue-500 bold-100">Projets</a>
+        <a href="<%= request.getContextPath() %>/ListTaches" class="hover:text-blue-500 text-bold-500">Taches</a>
     </div>
     <div class="flex space-x-10">
-        <a href="/projet" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Register</a>
-        <a href="/projet" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Login</a>
+        <a href="Register.jsp" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Register</a>
+        <a href="Login.jsp" class="bg-pink-500 text-white ml-6 px-6 py-3 rounded hover:bg-red-600">Login</a>
     </div>
 </nav>
 
@@ -36,7 +36,7 @@
 
 <div class="text-center mt-16">
     <a href="CreateProjet.jsp" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">
-        Create Project
+        Creer Projet
     </a>
 </div>
 
