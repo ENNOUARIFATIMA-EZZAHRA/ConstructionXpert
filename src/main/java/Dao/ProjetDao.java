@@ -9,10 +9,6 @@ import java.util.List;
 
 public class ProjetDao {
 
-    // Suppression de la variable statique 'connection'
-    // private static final Connection connection = getConnection();
-
-    // Création d'un projet
     public static void createProjet(ProjetModel projet) throws SQLException {
         String sql = "INSERT INTO projets (nom, description, date_debut, date_fin, budget) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnector.getConnection();  // Appel dynamique ici
