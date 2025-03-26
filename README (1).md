@@ -73,6 +73,8 @@ Les images se trouvent dans le dossier `/uml-diagrams`.
 
 ![ClassDiagram1](https://github.com/user-attachments/assets/f35da5e2-f258-458e-926b-50205cc508a8)
 ![SequenceDiagram1](https://github.com/user-attachments/assets/4610f179-24e2-4582-9157-dee2abd536ca)
+![SequenceDiagram-modification](https://github.com/user-attachments/assets/c87fa4e3-8038-4706-b7f4-fc9534f4cba5)
+![SequenceDiagram-supprimer](https://github.com/user-attachments/assets/8ca5a6e5-868b-41d8-8f2d-ae8a5cb28fc3)
 ![UseCaseDiagram1](https://github.com/user-attachments/assets/7f372c8f-90f1-4dc1-893f-bdfd50434804)
 
 
